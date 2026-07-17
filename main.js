@@ -7,7 +7,16 @@ function gameBoard() {
         return board;
     }
 
+    function placeMarker(index, marker) {
+        if (board[index] === "") {
+            board[index] = marker;
+            return true;
+        }
+        else return false;
+    }
+
     return {
-        getBoard
+        getBoard,
+        placeMarker
     };
 }
