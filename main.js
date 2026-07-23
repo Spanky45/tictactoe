@@ -20,3 +20,10 @@ function gameBoard() {
         placeMarker
     };
 }
+
+function player(name, marker) {
+    return {
+        name,
+        marker,
+    };
+}
