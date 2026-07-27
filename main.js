@@ -27,3 +27,9 @@ function player(name, marker) {
         marker,
     };
 }
+
+function gameController() {
+    gameBoard();
+    const playerOne = player(PlayerOne, X);
+    const playerTwo = player(playerTwo, O);
+}
