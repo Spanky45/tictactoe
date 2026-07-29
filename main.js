@@ -11,25 +11,37 @@ function gameBoard() {
         if (board[index] === "") {
             board[index] = marker;
             return true;
+        } else {
+            return false;
         }
-        else return false;
     }
 
     return {
         getBoard,
         placeMarker
-    };
+    }
 }
 
 function player(name, marker) {
     return {
         name,
         marker,
-    };
+    }
 }
 
 function gameController() {
-    gameBoard();
-    const playerOne = player(PlayerOne, X);
-    const playerTwo = player(playerTwo, O);
+    const board = gameBoard();
+    
+    const playerOne = player("PlayerOne", "X");
+    const playerTwo = player("playerTwo", "O");
+
+    let activePlayer = playerOne;
+
+    function switchPlayer() {
+        if (activePlayer === playerOne) {
+            activePlayer = playerTwo;
+        } else {
+            activePlayer = playerOne;
+        }
+    }
 }
