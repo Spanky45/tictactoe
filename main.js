@@ -44,4 +44,8 @@ function gameController() {
             activePlayer = playerOne;
         }
     }
+
+    function playRound(index) {
+        board.placeMarker(index, activePlayer.marker);
+    }
 }
