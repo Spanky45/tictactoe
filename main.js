@@ -46,6 +46,10 @@ function gameController() {
     }
 
     function playRound(index) {
-        board.placeMarker(index, activePlayer.marker);
+    if (board.placeMarker(index, activePlayer.marker)) {
+        switchPlayer();
+    } else {
+        return "Invalid move. Please try again.";
     }
+}
 }
