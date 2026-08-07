@@ -32,7 +32,7 @@ function player(name, marker) {
 function gameController() {
     const board = gameBoard();
     
-    const playerOne = player("PlayerOne", "X");
+    const playerOne = player("playerOne", "X");
     const playerTwo = player("playerTwo", "O");
 
     let activePlayer = playerOne;
@@ -42,6 +42,16 @@ function gameController() {
             activePlayer = playerTwo;
         } else {
             activePlayer = playerOne;
+        }
+    }
+
+    function gameWin() {
+        const currentBoard = board.getBoard();
+
+        if (currentBoard[0] === activePlayer.marker && currentBoard[1] === activePlayer.marker && currentBoard[2] === activePlayer.marker) {
+            return `${activePlayer.name} is the winner!`
+        } else {
+            return null
         }
     }
 
