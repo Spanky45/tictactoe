@@ -37,6 +37,17 @@ function gameController() {
 
     let activePlayer = playerOne;
 
+    const winningCombinations = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+
     function switchPlayer() {
         if (activePlayer === playerOne) {
             activePlayer = playerTwo;
@@ -48,18 +59,28 @@ function gameController() {
     function gameWin() {
         const currentBoard = board.getBoard();
 
-        if (currentBoard[0] === activePlayer.marker && currentBoard[1] === activePlayer.marker && currentBoard[2] === activePlayer.marker) {
-            return `${activePlayer.name} is the winner!`
-        } else {
-            return null
+        for (const combination of winningCombinations) {
+            if (currentBoard[combination[0]] === activePlayer.marker &&
+                 currentBoard[combination[1]] === activePlayer.marker &&
+                  currentBoard[combination[2]] === activePlayer.marker) {
+                return `${activePlayer.name} is the winner`;
+            }
         }
+        return null;
     }
 
     function playRound(index) {
     if (board.placeMarker(index, activePlayer.marker)) {
-        switchPlayer();
+        const winCheck = gameWin();
+
+        if (winCheck === null) {
+            switchPlayer();
+        } else {
+            return winCheck;
+        }
+
     } else {
         return "Invalid move. Please try again.";
     }
-}
+    }
 }
