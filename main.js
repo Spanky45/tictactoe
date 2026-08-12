@@ -56,6 +56,16 @@ function gameController() {
         }
     }
 
+    function drawCheck() {
+        const currentBoard = board.getBoard();
+
+        if (currentBoard.includes("")) {
+            return null;
+        } else {
+            return "Draw.";
+        }
+    }
+
     function gameWin() {
         const currentBoard = board.getBoard();
 
@@ -70,17 +80,26 @@ function gameController() {
     }
 
     function playRound(index) {
-    if (board.placeMarker(index, activePlayer.marker)) {
-        const winCheck = gameWin();
+        if (board.placeMarker(index, activePlayer.marker)) {
+            const winCheck = gameWin();
+            const checkDraw = drawCheck();
 
-        if (winCheck === null) {
-            switchPlayer();
+            if (winCheck !== null) {
+                return winCheck;
+            } else if (checkDraw !== null) {
+                return checkDraw;
+            } else {
+                switchPlayer();
+            }
+
         } else {
-            return winCheck;
+            return "Invalid move. Please try again.";
         }
+     }
 
-    } else {
-        return "Invalid move. Please try again.";
-    }
-    }
+    return {
+        playRound,
+    };
 }
+
+const game = gameController();
