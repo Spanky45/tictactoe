@@ -37,6 +37,8 @@ function gameController() {
 
     let activePlayer = playerOne;
 
+    let gameOver = false;
+
     const winningCombinations = [
         [0, 1, 2],
         [3, 4, 5],
@@ -80,13 +82,19 @@ function gameController() {
     }
 
     function playRound(index) {
+        if (gameOver === true) {
+            return "Game is over."
+        }
+
         if (board.placeMarker(index, activePlayer.marker)) {
             const winCheck = gameWin();
             const checkDraw = drawCheck();
 
             if (winCheck !== null) {
+                gameOver = true;
                 return winCheck;
             } else if (checkDraw !== null) {
+                gameOver = true;
                 return checkDraw;
             } else {
                 switchPlayer();
