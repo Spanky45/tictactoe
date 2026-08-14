@@ -1,3 +1,33 @@
-h1 {
-    color: red;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Asap", sans-serif;
+}
+
+body {
+    background-color: grey;
+}
+
+.game-container {
+    background-color: grey;
+    min-height: 100svh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-board {
+    min-height: 700px;
+    width: 1000px;
+    background-color: aqua;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.square {
+    height: 100px;
+    width: 100px;
+    background-color: white;
 }
