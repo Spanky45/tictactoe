@@ -18,8 +18,8 @@ body {
 }
 
 .game-board {
-    min-height: 700px;
-    width: 1000px;
+    aspect-ratio: 1/1;
+    width: min(90vw, 700px);
     background-color: aqua;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -27,7 +27,29 @@ body {
 }
 
 .square {
-    height: 100px;
-    width: 100px;
     background-color: white;
+}
+
+.square[data-index="0"],
+.square[data-index="3"],
+.square[data-index="6"] {
+    border-right: 5px solid black;
+}
+
+.square[data-index="2"],
+.square[data-index="5"],
+.square[data-index="8"] {
+    border-left: 5px solid black;
+}
+
+.square[data-index="6"],
+.square[data-index="7"],
+.square[data-index="8"] {
+    border-top: 5px solid black;
+}
+
+.square[data-index="0"],
+.square[data-index="1"],
+.square[data-index="2"] {
+    border-bottom: 5px solid black;
 }
