@@ -110,4 +110,17 @@ function gameController() {
     };
 }
 
+function screenController() {
+    const squares = document.querySelectorAll(".square");
+
+    squares.forEach(function(square) {
+        square.addEventListener("click", function() {
+            const index = Number(square.dataset.index);
+            game.playRound(index);
+        })
+    });
+}
+
 const game = gameController();
+
+screenController();
