@@ -105,18 +105,27 @@ function gameController() {
         }
      }
 
+    function getBoard() {
+        return board.getBoard();
+    }
+
     return {
         playRound,
+        getBoard
     };
 }
 
 function screenController() {
     const squares = document.querySelectorAll(".square");
+    const gameMessage = document.querySelector(".game-message");
 
     squares.forEach(function(square) {
         square.addEventListener("click", function() {
             const index = Number(square.dataset.index);
             game.playRound(index);
+            // console.log(`You clicked square index ${square.dataset.index}`);
+            const currentBoard = game.getBoard();
+            square.textContent = currentBoard[index];
         })
     });
 }

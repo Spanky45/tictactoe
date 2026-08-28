@@ -28,6 +28,11 @@ body {
 
 .square {
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    font-weight: bold;
 }
 
 .square[data-index="0"],
