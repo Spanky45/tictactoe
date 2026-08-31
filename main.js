@@ -109,23 +109,35 @@ function gameController() {
         return board.getBoard();
     }
 
+    function getActivePlayer() {
+        return activePlayer;
+    }
+
     return {
         playRound,
-        getBoard
+        getBoard,
+        getActivePlayer
     };
 }
 
 function screenController() {
     const squares = document.querySelectorAll(".square");
     const gameMessage = document.querySelector(".game-message");
+    gameMessage.textContent = `${game.getActivePlayer().name}'s turn`;
 
     squares.forEach(function(square) {
         square.addEventListener("click", function() {
             const index = Number(square.dataset.index);
-            game.playRound(index);
+            const roundResult = game.playRound(index);
             // console.log(`You clicked square index ${square.dataset.index}`);
             const currentBoard = game.getBoard();
             square.textContent = currentBoard[index];
+
+            if (roundResult !== undefined) {
+                gameMessage.textContent = roundResult;
+            } else {
+                gameMessage.textContent = `${game.getActivePlayer().name}'s turn`;
+            }
         })
     });
 }
