@@ -113,16 +113,24 @@ function gameController() {
         return activePlayer;
     }
 
+    function resetGame() {
+        board.getBoard().fill("");
+        activePlayer = playerOne;
+        gameOver = false;
+    }
+
     return {
         playRound,
         getBoard,
-        getActivePlayer
+        getActivePlayer,
+        resetGame
     };
 }
 
 function screenController() {
     const squares = document.querySelectorAll(".square");
     const gameMessage = document.querySelector(".game-message");
+    const restartButton = document.querySelector(".restart");
     gameMessage.textContent = `${game.getActivePlayer().name}'s turn`;
 
     squares.forEach(function(square) {
@@ -139,6 +147,16 @@ function screenController() {
                 gameMessage.textContent = `${game.getActivePlayer().name}'s turn`;
             }
         })
+    });
+
+    restartButton.addEventListener("click", function() {
+        game.resetGame();
+        
+        squares.forEach(function(square) {
+            square.textContent = "";
+        });
+
+        gameMessage.textContent = `${game.getActivePlayer().name}'s turn`;
     });
 }
 
