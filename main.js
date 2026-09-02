@@ -119,11 +119,17 @@ function gameController() {
         gameOver = false;
     }
 
+    function setPlayerNames(playerOneName, playerTwoName) {
+        playerOne.name = playerOneName;
+        playerTwo.name = playerTwoName;
+    }
+
     return {
         playRound,
         getBoard,
         getActivePlayer,
-        resetGame
+        resetGame,
+        setPlayerNames
     };
 }
 
@@ -131,6 +137,8 @@ function screenController() {
     const squares = document.querySelectorAll(".square");
     const gameMessage = document.querySelector(".game-message");
     const restartButton = document.querySelector(".restart");
+    const playerOneInput = document.querySelector(".player-one-name");
+    const playerTwoInput = document.querySelector(".player-two-name");
     gameMessage.textContent = `${game.getActivePlayer().name}'s turn`;
 
     squares.forEach(function(square) {
