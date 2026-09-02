@@ -166,6 +166,21 @@ function screenController() {
 
         gameMessage.textContent = `${game.getActivePlayer().name}'s turn`;
     });
+
+    function handleNameInput(event) {
+         if (event.key === "Enter") {
+            const playerOneName = playerOneInput.value;
+            const playerTwoName = playerTwoInput.value;
+
+            game.setPlayerNames(playerOneName, playerTwoName);
+
+            gameMessage.textContent = `${game.getActivePlayer().name}'s turn`;
+        }
+    }
+
+    playerOneInput.addEventListener("keydown", handleNameInput);
+    playerTwoInput.addEventListener("keydown", handleNameInput);
+
 }
 
 const game = gameController();
