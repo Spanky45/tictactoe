@@ -32,8 +32,8 @@ function player(name, marker) {
 function gameController() {
     const board = gameBoard();
     
-    const playerOne = player("playerOne", "X");
-    const playerTwo = player("playerTwo", "O");
+    const playerOne = player("Player 1", "X");
+    const playerTwo = player("Player 2", "O");
 
     let activePlayer = playerOne;
 
@@ -75,7 +75,7 @@ function gameController() {
             if (currentBoard[combination[0]] === activePlayer.marker &&
                  currentBoard[combination[1]] === activePlayer.marker &&
                   currentBoard[combination[2]] === activePlayer.marker) {
-                return `${activePlayer.name} is the winner`;
+                return `${activePlayer.name} is the Winner!`;
             }
         }
         return null;
